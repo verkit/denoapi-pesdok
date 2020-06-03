@@ -18,11 +18,11 @@ export default async ({
     value: { nomor_pemeriksaan, id_pasien, keluhan, resep, tanggal, status },
   } = await request.body();
 
-  if (!nomor_pemeriksaan || !id_pasien || !keluhan || !resep || !tanggal || !status) {
+  if (!nomor_pemeriksaan || !id_pasien || !keluhan || !tanggal || !status) {
     response.status = 422;
     response.body = {
       message:
-        "Incorrect pemeriksaan data. Nomor pemeriksaan, pasien, keluhan, resep, tanggal and status are required",
+        "Incorrect pemeriksaan data. Nomor pemeriksaan, pasien, keluhan, tanggal and status are required",
     };
     return;
   }

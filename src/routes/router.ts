@@ -11,6 +11,7 @@ import getPemeriksaansDetails from "../controllers/pemeriksaan/getPemeriksaanDet
 import createPemeriksaans from "../controllers/pemeriksaan/createPemeriksaan.ts";
 import updatePemeriksaans from "../controllers/pemeriksaan/updatePemeriksaan.ts";
 import deletePemeriksaans from "../controllers/pemeriksaan/deletePemeriksaan.ts";
+import getPemeriksaanHariIni from "../controllers/pemeriksaan/getPemeriksaanHariIni.ts";
 
 const router = new Router();
 
@@ -22,11 +23,12 @@ router
   .delete("/api/pasien/:id", deletePasien);
 
 router
-  .get("/api/pemeriksaan", getAllPemeriksaans)
-  .get("/api/pemeriksaan/:id", getPemeriksaansDetails)
-  .post("/api/pemeriksaan", createPemeriksaans)
-  .put("/api/pemeriksaan/:id", updatePemeriksaans)
-  .delete("/api/pemeriksaan/:id", deletePemeriksaans);
+  .get("/api/periksa", getAllPemeriksaans)
+  .get("/api/periksa/hariini", getPemeriksaanHariIni)
+  .get("/api/periksa/:id", getPemeriksaansDetails)
+  .post("/api/periksa", createPemeriksaans)
+  .put("/api/periksa/:id", updatePemeriksaans)
+  .delete("/api/periksa/:id", deletePemeriksaans);
 
 router.get("/", (context) => {
   context.response.body = "Hello Api Deno!";

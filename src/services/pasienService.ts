@@ -1,15 +1,15 @@
 import pasienModel from "../models/Pasien.ts";
 
 const PasienAll = async () => {
-  return await pasienModel.findAll();
+  return (await pasienModel.findAll()).rows;
 };
 
 const PasienById = async (pasienId: string) => {
-  return await pasienModel.findById(pasienId);
+  return (await pasienModel.findById(pasienId)).rows;
 };
 
 const PemeriksaanPasien = async (pasienId: string) => {
-  return await pasienModel.findPemeriksaan(pasienId);
+  return (await pasienModel.findPemeriksaan(pasienId)).rows;
 };
 
 const createPasien = async (pasienData: any) => {
@@ -27,7 +27,7 @@ const createPasien = async (pasienData: any) => {
 const updatePasien = async (pasienId: any, pasienData: any) => {
   const pasien = await PasienById(pasienId);
 
-  if (Object.keys(pasien).length === 0 && pasien.constructor === Object) {
+  if (pasien?.length === 0 && pasien.constructor === Object) {
     throw new Error("Pasien not found");
   }
 

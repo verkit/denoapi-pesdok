@@ -31,18 +31,18 @@ export default async ({
   }
 
   const {
-    value: { nomor_pemeriksaan, id_pasien, keluhan, resep, tanggal }
+    value: { nomor_pemeriksaan, id_pasien, keluhan, resep, tanggal, status }
   } = await request.body();
 
-  if (!nomor_pemeriksaan || !id_pasien || !keluhan || !resep || !tanggal) {
+  if (!nomor_pemeriksaan || !id_pasien || !keluhan || !resep || !tanggal || !status) {
     response.status = 422;
     response.body = {
-      message: "Incorrect pemeriksaan data. Nomor pemeriksaan, pasien, keluhan, resep and tanggal are required",
+      message: "Incorrect pemeriksaan data. Nomor pemeriksaan, pasien, keluhan, resep, status and tanggal are required",
     };
     return;
   }
 
-  const valueEdit = { nomor_pemeriksaan, id_pasien, keluhan, resep, tanggal };
+  const valueEdit = { nomor_pemeriksaan, id_pasien, keluhan, resep, tanggal, status };
 
   await updatePemeriksaan(pemeriksaanId, valueEdit);
 
